@@ -1,3 +1,5 @@
+import 'package:chat_bud/Profile/sign_up.dart';
+import 'package:chat_bud/Screens/test_api.dart';
 import 'package:chat_bud/main.dart';
 import 'package:flutter/material.dart';
 import 'package:introduction_screen/introduction_screen.dart';
@@ -62,7 +64,12 @@ class Welcome extends StatelessWidget {
                       style: TextStyle(
                           fontSize: 18.0, fontWeight: FontWeight.bold),
                     ),
-                    onPressed: () => {},
+                    onPressed: () => {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => Quote()),
+                      )
+                    },
                   ),
                 ),
                 dotsDecorator: DotsDecorator(
