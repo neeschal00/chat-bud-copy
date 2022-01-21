@@ -5,18 +5,14 @@ import 'dart:convert';
 import 'dart:async';
 import 'dart:collection';
 
-User user = new User();
-
 Future<List<User>> fetchQuote() async {
-  final response = await http.get(Uri.parse('http://localhost:3000/users/all'),
-      headers: {
-        "Accept": "application/json",
-        "Access-Control-Allow-Origin": "*"
-      });
+  final response = await http.get(
+    Uri.parse('http://localhost:3000/users/all'),
+  );
 
   if (response.statusCode == 200) {
     final parsed = json.decode(response.body).cast<Map<String, dynamic>>();
-    return parsed.map<User>((json) => User.fromJson(json)).toList();
+    return parsed.map<User>((json) => User.fromMap(json)).toList();
   } else {
     // If the server did not return a 200 OK response,
     // then throw an exception.
