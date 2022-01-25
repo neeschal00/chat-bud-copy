@@ -25,6 +25,17 @@ class SignIn extends StatelessWidget {
                     children: [
                       FormBuilderTextField(
                         name: 'textfield',
+                        decoration: InputDecoration(
+                          labelText: "Enter Your number"
+                        ),
+                        validator: (value) {
+                          if (value.isEmpty) {
+                            return 'Please enter some text';
+                          }
+                          return null;
+                        },
+                          
+                        }
                       ),
                       ElevatedButton(
                         child: Text('Submit'),
