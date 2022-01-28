@@ -6,48 +6,41 @@ class SignIn extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        child: Center(
-          child: Column(
-            children: [
-              Center(
-                child: Image.asset(
-                  'assets/images/launch_image.png',
-                  fit: BoxFit.contain,
-                  width: 100,
-                  height: 100,
-                ),
-              ),
-              Container(
-                child: FormBuilder(
-                  key: formKey,
-                  child: Column(
-                    children: [
-                      FormBuilderTextField(
-                        name: 'textfield',
-                        decoration: InputDecoration(
-                          labelText: "Enter Your number"
-                        ),
-                        validator: (value) {
-                          if (value.isEmpty) {
-                            return 'Please enter some text';
-                          }
-                          return null;
-                        },
-                          
-                        }
-                      ),
-                      ElevatedButton(
-                        child: Text('Submit'),
-                        onPressed: () {},
-                      ),
-                    ],
+      body: SafeArea(
+        child: Container(
+          child: Center(
+            child: Column(
+              children: [
+                Center(
+                  child: Image.asset(
+                    'assets/images/launch_image.png',
+                    fit: BoxFit.contain,
+                    width: 100,
+                    height: 100,
                   ),
-                  onChanged: () => (print(formKey.currentState)),
-                  autovalidateMode: AutovalidateMode.always,
                 ),
-              )
-            ],
+                Container(
+                  child: FormBuilder(
+                    key: formKey,
+                    child: Column(
+                      children: [
+                        FormBuilderTextField(
+                          name: 'textfield',
+                          decoration:
+                              InputDecoration(labelText: "Enter Your number"),
+                        ),
+                        ElevatedButton(
+                          child: Text('Submit'),
+                          onPressed: () {},
+                        ),
+                      ],
+                    ),
+                    onChanged: () => (print(formKey.currentState)),
+                    autovalidateMode: AutovalidateMode.always,
+                  ),
+                )
+              ],
+            ),
           ),
         ),
       ),

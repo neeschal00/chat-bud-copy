@@ -3,6 +3,7 @@ import 'package:chat_bud/Profile/sign_up.dart';
 import 'package:chat_bud/Screens/test_api.dart';
 import 'package:chat_bud/main.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 import 'package:lottie/lottie.dart';
 
@@ -66,10 +67,7 @@ class Welcome extends StatelessWidget {
                           fontSize: 18.0, fontWeight: FontWeight.bold),
                     ),
                     onPressed: () => {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => Quote()),
-                      )
+                      Get.to(SignUp()),
                     },
                   ),
                 ),
