@@ -1,3 +1,4 @@
+import 'package:chat_bud/Pages/dashboard/dashboard_page.dart';
 import 'package:chat_bud/Profile/sign_in.dart';
 import 'package:chat_bud/Profile/sign_up.dart';
 import 'package:chat_bud/Screens/test_api.dart';
@@ -67,7 +68,7 @@ class Welcome extends StatelessWidget {
                           fontSize: 18.0, fontWeight: FontWeight.bold),
                     ),
                     onPressed: () => {
-                      Get.to(SignUp()),
+                      Get.to(DashboardPage()),
                     },
                   ),
                 ),

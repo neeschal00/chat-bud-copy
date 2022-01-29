@@ -1,6 +1,8 @@
+import 'package:chat_bud/Pages/Search/search_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
-class SearchPage extends StatelessWidget {
+class SearchPage extends GetView<Search_controller> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

@@ -1,7 +1,9 @@
+import 'package:chat_bud/Pages/Settingscb/setting_controller.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
-class Search_page extends StatelessWidget {
+class Setting_page extends GetView<Setting_controller> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

@@ -1,16 +1,16 @@
-import 'package:chat_bud/Pages/Messages/message_controller.dart';
+import 'package:chat_bud/Profile/profile_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class ViewMessage extends GetView<MessageViewController> {
+class Profile extends GetView<Profile_controller> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('View Message'),
+        title: Text("Profile"),
       ),
       body: Center(
-        child: Text('View Message'),
+        child: Text("Profile"),
       ),
     );
   }

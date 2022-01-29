@@ -45,7 +45,6 @@ dependencies:
   pull_to_refresh: ^2.0.0
   http: ^0.13.4
   dio: ^4.0.4
-  persistent_bottom_nav_bar: ^4.0.2
   get: ^4.6.1
   
 
