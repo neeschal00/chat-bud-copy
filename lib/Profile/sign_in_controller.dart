@@ -24,6 +24,6 @@ class SignInController extends GetxController {
     if (value.isEmpty) {
       return 'Please this field must be filled';
     }
-    return null;
+    return "Alright";
   }
 }
