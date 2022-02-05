@@ -1,3 +1,5 @@
+import 'dart:js';
+
 import 'package:chat_bud/Profile/sign_in_controller.dart';
 import 'package:chat_bud/Profile/sign_up.dart';
 import 'package:flutter/material.dart';
@@ -8,6 +10,8 @@ import 'package:lottie/lottie.dart';
 class SignIn extends GetView<SignInController> {
   @override
   Widget build(BuildContext context) {
+    final isDarkMode = Theme.of(context).brightness == Brightness.dark;
+
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: SafeArea(
@@ -18,7 +22,9 @@ class SignIn extends GetView<SignInController> {
                 Container(
                   child: Center(
                     child: Image.asset(
-                      'assets/images/signin.png',
+                      isDarkMode
+                          ? "assets/icons/chat bud-logos_white.png"
+                          : "assets/icons/chat bud-logos_transparent.png",
                       fit: BoxFit.contain,
                       width: 250,
                       height: 300,
