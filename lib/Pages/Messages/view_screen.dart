@@ -7,10 +7,10 @@ class ViewMessage extends GetView<MessageViewController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('View Message'),
+        title: Text('chatid'),
       ),
       body: Center(
-        child: Text('View Message'),
+        child: Text('hello world'),
       ),
     );
   }
