@@ -68,7 +68,7 @@ class Welcome extends StatelessWidget {
                           fontSize: 18.0, fontWeight: FontWeight.bold),
                     ),
                     onPressed: () => {
-                      Get.to(SignIn()),
+                      Get.to(DashboardPage()),
                     },
                   ),
                 ),

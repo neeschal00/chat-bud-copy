@@ -1,5 +1,3 @@
-import 'dart:js';
-
 import 'package:chat_bud/Profile/sign_in_controller.dart';
 import 'package:chat_bud/Profile/sign_up.dart';
 import 'package:flutter/material.dart';
