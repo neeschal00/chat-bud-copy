@@ -5,22 +5,18 @@ import 'package:get/get.dart';
 class Chat_Body extends GetView<MessageViewController> {
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Container(
-          child: GetX<MessageViewController>(
-            init: MessageViewController(),
-            builder: (_) => _.messageList.length == 0
-                ? Center(
-                    child: Text("No Messages"),
-                  )
-                : ListView.builder(
-                    itemCount: _.messageList.length,
-                    itemBuilder: (context, index) => _.messageList[index],
-                  ),
-          ),
-        ),
-      ],
+    MessageViewController controller = Get.put(MessageViewController());
+    return ListView.builder(
+      itemCount: controller.messageList.length,
+      itemBuilder: (BuildContext context, int index) {
+        return Row(
+          children: [
+            CircleAvatar(
+              backgroundImage: AssetImage(controller.messageList[index].image),
+            ),
+          ],
+        );
+      },
     );
   }
 }

@@ -15,6 +15,7 @@ class DashboardPage extends StatelessWidget {
       init: DashboardController(),
       builder: (controller) {
         return Scaffold(
+            resizeToAvoidBottomInset: false,
             body: SafeArea(
               child: IndexedStack(
                 index: controller.tabIndex,
