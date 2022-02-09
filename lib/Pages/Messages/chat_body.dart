@@ -8,7 +8,6 @@ import 'package:get/get.dart';
 class Chat_Body extends GetView<MessageViewController> {
   @override
   Widget build(BuildContext context) {
-    MessageViewController controller = Get.put(MessageViewController());
     print(controller.messageList.length);
     return ListView.builder(
       itemCount: controller.messageList.length,
@@ -16,7 +15,8 @@ class Chat_Body extends GetView<MessageViewController> {
         return ChatCard(
           chat: controller.messageList[index],
           press: () {
-            Get.toNamed('/chat_screen');
+            Get.toNamed('/chat_screen',
+                arguments: controller.messageList[index]);
           },
         );
       },

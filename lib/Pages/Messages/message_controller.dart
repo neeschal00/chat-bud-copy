@@ -1,7 +1,28 @@
 import 'package:chat_bud/Models/chat.dart';
+import 'package:chat_bud/Models/chat_messages.dart';
 import 'package:get/get.dart';
 
 class MessageViewController extends GetxController {
+  Map messages = {
+    "name": "Jenny Wilson",
+    "messages": [
+      ChatMessages(
+          chat_id: "127tgeibsiqbskj",
+          message: "Hey, how are you?",
+          time: "12:00",
+          sender_avatar: "assets/images/1.png",
+          sender_name: "jaikant",
+          isSent: true),
+      ChatMessages(
+          chat_id: "127tgeibsiqbskj",
+          message: "Hey, how are you?",
+          time: "12:00",
+          sender_avatar: "assets/images/1.png",
+          sender_name: "jaikant",
+          isSent: true),
+    ]
+  };
+
   List messageList = [
     Chat(
         name: "Jenny Wilson",

@@ -9,6 +9,7 @@ import 'package:get/get.dart';
 class ViewMessage extends GetView<MessageViewController> {
   @override
   Widget build(BuildContext context) {
+    MessageViewController controller = Get.put(MessageViewController());
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: SafeArea(
