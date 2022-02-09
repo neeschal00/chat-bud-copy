@@ -58,5 +58,26 @@ class MessageViewController extends GetxController {
       time: "5d ago",
       isActive: false,
     ),
+    Chat(
+      name: "Ralph Edwards",
+      lastMessage: "Do you have update...",
+      image: "assets/images/3.png",
+      time: "5d ago",
+      isActive: false,
+    ),
+    Chat(
+      name: "Edwards",
+      lastMessage: "Do you have update...",
+      image: "assets/images/1.png",
+      time: "51 min ago",
+      isActive: false,
+    ),
+    Chat(
+      name: "Ralph",
+      lastMessage: "Do you have update...",
+      image: "assets/images/2.png",
+      time: "7d ago",
+      isActive: true,
+    ),
   ];
 }
