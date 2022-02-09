@@ -1,3 +1,4 @@
+import 'package:chat_bud/Pages/Contacts/contact_view.dart';
 import 'package:chat_bud/Pages/Messages/view_screen.dart';
 import 'package:chat_bud/Pages/Search/search_view.dart';
 import 'package:chat_bud/Pages/Settingscb/setting_page.dart';
@@ -22,7 +23,7 @@ class DashboardPage extends StatelessWidget {
                 children: [
                   ViewMessage(),
                   SearchPage(),
-                  Setting_page(),
+                  Contact_View(),
                   Profile(),
                 ],
               ),
@@ -40,8 +41,8 @@ class DashboardPage extends StatelessWidget {
                   label: 'Search',
                 ),
                 BottomNavigationBarItem(
-                  icon: Icon(CupertinoIcons.settings),
-                  label: 'Settings',
+                  icon: Icon(CupertinoIcons.person_3),
+                  label: 'Contacts',
                 ),
                 BottomNavigationBarItem(
                   icon: Icon(CupertinoIcons.person_alt_circle_fill),

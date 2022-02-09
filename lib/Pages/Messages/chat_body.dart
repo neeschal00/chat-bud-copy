@@ -15,7 +15,9 @@ class Chat_Body extends GetView<MessageViewController> {
       itemBuilder: (BuildContext context, int index) {
         return ChatCard(
           chat: controller.messageList[index],
-          press: () {},
+          press: () {
+            Get.toNamed('/chat_screen');
+          },
         );
       },
     );

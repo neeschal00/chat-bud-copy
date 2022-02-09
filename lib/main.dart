@@ -1,3 +1,4 @@
+import 'package:chat_bud/Pages/Messages/chat_screen.dart';
 import 'package:chat_bud/Pages/Messages/view_screen.dart';
 import 'package:chat_bud/Pages/Search/search_view.dart';
 import 'package:chat_bud/Pages/Settingscb/setting_page.dart';
@@ -29,6 +30,7 @@ class MyApp extends StatelessWidget {
         GetPage(name: "/signup", page: () => SignUp()),
         GetPage(name: "/search", page: () => SearchPage()),
         GetPage(name: "/chat", page: () => ViewMessage()),
+        GetPage(name: "/chat_screen", page: () => Chat_Screen()),
         GetPage(name: "/profile", page: () => Profile()),
         GetPage(name: "/settings", page: () => Setting_page()),
       ],
