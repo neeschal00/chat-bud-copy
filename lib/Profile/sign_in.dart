@@ -53,7 +53,7 @@ class SignIn extends GetView<SignInController> {
                             name: 'textfield',
                             decoration: InputDecoration(
                                 border: OutlineInputBorder(),
-                                labelText: "Username"),
+                                labelText: "Usernamed"),
                           ),
                           width: 300,
                         ),
