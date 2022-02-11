@@ -10,15 +10,24 @@ class Message_Body extends GetView<MessageViewController> {
   @override
   Widget build(BuildContext context) {
     print("Messages no: ${controller.messages["messages"].length}");
+
+    Widget messageContaint(ChatMessages message) {
+      if (message.isMedia ?? false) {
+        return SizedBox(
+          height: 10,
+        );
+      }
+      return Message(message: message);
+    }
+
     return Container(
       child: Column(
         children: <Widget>[
           Expanded(
             child: ListView.builder(
               itemCount: controller.messages["messages"].length,
-              itemBuilder: (context, index) => Message(
-                message: controller.messages['messages'][index],
-              ),
+              itemBuilder: (context, index) =>
+                  messageContaint(controller.messages["messages"][index]),
             ),
           ),
           ChatInput(),
