@@ -1,5 +1,5 @@
 import 'package:chat_bud/Models/chat.dart';
-import 'package:chat_bud/Pages/Messages/chat_card.dart';
+import 'package:chat_bud/Pages/Messages/Components/chat_card.dart';
 import 'package:chat_bud/Pages/Messages/message_controller.dart';
 import 'package:chat_bud/constants.dart';
 import 'package:flutter/material.dart';

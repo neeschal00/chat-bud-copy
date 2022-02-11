@@ -27,6 +27,20 @@ class MessageViewController extends GetxController {
           sender_avatar: "assets/images/1.png",
           sender_name: "jenny",
           isSent: true),
+      ChatMessages(
+          chat_id: "127tgeibsiqbskj",
+          message: "call me",
+          time: "13:00",
+          sender_avatar: "assets/images/1.png",
+          sender_name: "jaikant",
+          isSent: true),
+      ChatMessages(
+          chat_id: "127tgeibsiqbskj",
+          message: "ok hi",
+          time: "20:00",
+          sender_avatar: "assets/images/1.png",
+          sender_name: "jenny",
+          isSent: true),
     ]
   };
 
