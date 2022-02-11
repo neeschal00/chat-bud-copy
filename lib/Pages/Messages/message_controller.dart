@@ -15,24 +15,24 @@ class MessageViewController extends GetxController {
           isSent: true),
       ChatMessages(
           chat_id: "127tgeibsiqbskj",
-          message: "Hey, how are you?",
-          time: "12:00",
-          sender_avatar: "assets/images/1.png",
-          sender_name: "jenny",
-          isSent: true),
-      ChatMessages(
-          chat_id: "127tgeibsiqbskj",
-          message: "Hey, how are you?",
-          time: "12:00",
-          sender_avatar: "assets/images/1.png",
-          sender_name: "jenny",
-          isSent: true),
-      ChatMessages(
-          chat_id: "127tgeibsiqbskj",
           message: "call me",
           time: "13:00",
           sender_avatar: "assets/images/1.png",
           sender_name: "jaikant",
+          isSent: true),
+      ChatMessages(
+          chat_id: "127tgeibsiqbskj",
+          message: "Hey, how are you?",
+          time: "12:00",
+          sender_avatar: "assets/images/1.png",
+          sender_name: "jenny",
+          isSent: true),
+      ChatMessages(
+          chat_id: "127tgeibsiqbskj",
+          message: "Hey, how are you?",
+          time: "12:00",
+          sender_avatar: "assets/images/1.png",
+          sender_name: "jenny",
           isSent: true),
       ChatMessages(
           chat_id: "127tgeibsiqbskj",
