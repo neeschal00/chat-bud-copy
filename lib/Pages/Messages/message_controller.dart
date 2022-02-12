@@ -33,7 +33,7 @@ class MessageViewController extends GetxController {
           sender_avatar: "assets/images/1.png",
           isMedia: false,
           mediaType: "",
-          mediaUrl: "",
+          mediaUrl: "assets/images/1.png",
           sender_name: "jenny",
           isSent: true),
       ChatMessages(

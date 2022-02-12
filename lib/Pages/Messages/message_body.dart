@@ -13,8 +13,20 @@ class Message_Body extends GetView<MessageViewController> {
 
     Widget messageContaint(ChatMessages message) {
       if (message.isMedia ?? false) {
-        return SizedBox(
-          height: 10,
+        return Padding(
+          padding: const EdgeInsets.only(top: kDefaultPadding),
+          child: Row(
+            children: [
+              if (message.sender_name != "jaikant") ...[
+                CircleAvatar(
+                  backgroundImage: AssetImage(message.sender_avatar.toString()),
+                ),
+                ImageMessage(
+                  message: message,
+                ),
+              ],
+            ],
+          ),
         );
       }
       return Message(message: message);
@@ -32,6 +44,35 @@ class Message_Body extends GetView<MessageViewController> {
           ),
           ChatInput(),
         ],
+      ),
+    );
+  }
+}
+
+class ImageMessage extends StatelessWidget {
+  const ImageMessage({
+    Key? key,
+    @required this.message,
+  }) : super(key: key);
+  final ChatMessages? message;
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      width: MediaQuery.of(context).size.width * 0.45,
+      child: Padding(
+        padding: const EdgeInsets.only(left: kDefaultPadding),
+        child: AspectRatio(
+            aspectRatio: 1.5,
+            child: Stack(
+              children: [
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(8),
+                  child: Image.asset(
+                    message?.mediaUrl ?? "",
+                  ),
+                )
+              ],
+            )),
       ),
     );
   }
