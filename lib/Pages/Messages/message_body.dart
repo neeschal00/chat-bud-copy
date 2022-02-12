@@ -2,6 +2,7 @@ import 'package:chat_bud/Models/chat_messages.dart';
 import 'package:chat_bud/Pages/Messages/Components/chat_inputfield.dart';
 import 'package:chat_bud/Pages/Messages/Components/message_comp.dart';
 import 'package:chat_bud/Pages/Messages/message_controller.dart';
+import 'package:chat_bud/Pages/Messages/view_photot.dart';
 import 'package:chat_bud/constants.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
@@ -61,18 +62,20 @@ class ImageMessage extends StatelessWidget {
       width: MediaQuery.of(context).size.width * 0.45,
       child: Padding(
         padding: const EdgeInsets.only(left: kDefaultPadding),
-        child: AspectRatio(
-            aspectRatio: 1.5,
-            child: Stack(
-              children: [
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(8),
-                  child: Image.asset(
-                    message?.mediaUrl ?? "",
-                  ),
-                )
-              ],
-            )),
+        child: GestureDetector(
+            onTap: () => Get.to(ViewPhoto(url: message?.mediaUrl)),
+            child: AspectRatio(
+                aspectRatio: 1.5,
+                child: Stack(
+                  children: [
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(8),
+                      child: Image.asset(
+                        message?.mediaUrl ?? "",
+                      ),
+                    )
+                  ],
+                ))),
       ),
     );
   }
