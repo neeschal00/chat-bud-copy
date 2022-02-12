@@ -46,6 +46,7 @@ dependencies:
   http: ^0.13.4
   dio: ^4.0.4
   get: ^4.6.1
+  photo_view: ^0.13.0
   
 
 
