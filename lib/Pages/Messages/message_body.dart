@@ -2,7 +2,7 @@ import 'package:chat_bud/Models/chat_messages.dart';
 import 'package:chat_bud/Pages/Messages/Components/chat_inputfield.dart';
 import 'package:chat_bud/Pages/Messages/Components/message_comp.dart';
 import 'package:chat_bud/Pages/Messages/message_controller.dart';
-import 'package:chat_bud/Pages/Messages/view_photot.dart';
+import 'package:chat_bud/Screens/view_photot.dart';
 import 'package:chat_bud/constants.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
