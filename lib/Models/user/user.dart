@@ -1,12 +1,7 @@
 import 'dart:convert';
 
-// User userFromJson(String str) => User.fromJson(json.decode(str));
-// String userToJson(User data) => json.encode(data.toJson());
-
-List<User> UserFromJson(String str) =>
-    List<User>.from(json.decode(str).map((x) => User.fromMap(x)));
-
 class User {
+  List<dynamic>? blockedUsers;
   String? id;
   String? username;
   String? email;
@@ -28,6 +23,7 @@ class User {
   int? v;
 
   User({
+    this.blockedUsers,
     this.id,
     this.username,
     this.email,
@@ -50,6 +46,7 @@ class User {
   });
 
   factory User.fromMap(Map<String, dynamic> data) => User(
+        blockedUsers: data['blockedUsers'] as List<dynamic>?,
         id: data['_id'] as String?,
         username: data['username'] as String?,
         email: data['email'] as String?,
@@ -72,6 +69,7 @@ class User {
       );
 
   Map<String, dynamic> toMap() => {
+        'blockedUsers': blockedUsers,
         '_id': id,
         'username': username,
         'email': email,
