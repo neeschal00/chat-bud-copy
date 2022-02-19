@@ -3,10 +3,25 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/cupertino.dart';
 
 class User {
-  final int index;
+  final String id;
+  final String email;
   final String name;
+  User({
+    this.id,
+    @required this.email,
+    @required this.name,
+  });
+}
 
-  User(this.index, this.name);
+class UserData {
+  final String id;
+  final String email;
+  final String name;
+  UserData({
+    this.id,
+    this.email,
+    this.name,
+  });
 }
 
 class ChatUsers {

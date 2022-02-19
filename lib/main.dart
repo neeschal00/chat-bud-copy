@@ -7,6 +7,16 @@ import 'package:signal/store/reducer.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 
 // Initial state/store values
+final store = new Store(reducers,
+    initialState: ChatState(
+      errMsg: '',
+      allUsers: [],
+      isAuthenticated: false,
+      activeRoom: "",
+      activeUser: "",
+      messages: [],
+    ),
+    middleware: [thunkMiddleware]);
 
 Future<void> main() async {
   runApp(MyApp(store: store));

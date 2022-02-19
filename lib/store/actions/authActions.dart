@@ -9,3 +9,12 @@ import 'package:signal/screens/home/UsersList.dart';
 import 'package:signal/store/actions/types.dart';
 import 'package:signal/store/reducer.dart';
 import 'dart:convert';
+//Load Action
+
+Future<void> loadUser() {}
+
+//login action
+Future<void> login() {}
+
+//Register action
+Future<void> register() {}
