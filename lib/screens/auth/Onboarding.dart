@@ -16,7 +16,13 @@ class Onboarding extends StatefulWidget {
 class _OnboardingState extends State<Onboarding> {
   final LocalStorage storage = new LocalStorage('signal');
   @override
-  void initState() {}
+  void initState() {
+    super.initState();
+
+    new Future.delayed(const Duration(seconds: 3), () {
+      store.dispatch(loadUser(store: store, context: context));
+    });
+  }
 
   @override
   Widget build(BuildContext context) {

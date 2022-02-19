@@ -1,3 +1,4 @@
+// import 'dart:html';
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
@@ -11,7 +12,9 @@ import 'package:signal/store/reducer.dart';
 import 'dart:convert';
 //Load Action
 
-Future<void> loadUser() {}
+Future<void> loadUser({Store<ChatState> store, BuildContext context}) {
+  print("loadUser");
+}
 
 //login action
 Future<void> login() {}

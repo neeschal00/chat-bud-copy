@@ -41,9 +41,9 @@ class _SignalListState extends State<SignalList> {
     List<User> users = [];
 
     for (var u in jsonData) {
-      User user = User(u['id'], u['name']);
+      // User user = User(u['id'], u['name']);
 
-      users.add(user);
+      // users.add(user);
     }
 
     return users;
