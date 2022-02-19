@@ -8,7 +8,6 @@ import 'package:flutter_redux/flutter_redux.dart';
 
 // Initial state/store values
 
-
 Future<void> main() async {
   runApp(MyApp(store: store));
 }
@@ -21,7 +20,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new StoreProvider(
-        store: store,
+        // store: store,
         child: MaterialApp(
             title: 'Flutter Signal App',
             theme: ThemeData(
@@ -31,7 +30,7 @@ class MyApp extends StatelessWidget {
             initialRoute: "onboarding",
             routes: {
               "onboarding": (BuildContext context) => Onboarding(),
-              "login": (BuildContext context) => Login(),
+              // "login": (BuildContext context) => Login(),
             },
             home: SafeArea(
               child: Scaffold(),

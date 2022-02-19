@@ -1,13 +1,28 @@
 import 'package:flutter/cupertino.dart';
 
-// User
+import 'package:flutter/cupertino.dart';
 
+class User {
+  final int index;
+  final String name;
 
-// User Data
+  User(this.index, this.name);
+}
 
-// Dynamic Data for users
+class ChatUsers {
+  String name;
+  String messageText;
+  String time;
 
+  ChatUsers({
+    @required this.name,
+    @required this.messageText,
+    @required this.time,
+  });
+}
 
-// Chat Models
-
-// Message Model
+class ChatMessage {
+  String messageContent;
+  String messageType;
+  ChatMessage({@required this.messageContent, @required this.messageType});
+}
