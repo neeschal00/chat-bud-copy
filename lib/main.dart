@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:redux/redux.dart';
 import 'package:redux_thunk/redux_thunk.dart';
 import 'package:chat_bud/screens/auth/Login.dart';
+import 'package:chat_bud/screens/auth/Register.dart';
 import 'package:chat_bud/screens/auth/Onboarding.dart';
 import 'package:chat_bud/store/reducer.dart';
 import 'package:flutter_redux/flutter_redux.dart';
@@ -41,6 +42,7 @@ class MyApp extends StatelessWidget {
             routes: {
               "onboarding": (BuildContext context) => Onboarding(),
               "login": (BuildContext context) => Login(),
+              "register": (BuildContext context) => Register(),
             },
             home: SafeArea(
               child: Scaffold(),

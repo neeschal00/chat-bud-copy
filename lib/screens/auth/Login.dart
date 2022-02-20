@@ -84,7 +84,10 @@ class _LoginState extends State<LoginMain> {
                             child: TextField(
                               onChanged: (email) {
                                 setState(() {
-                                  _email = email;
+                                  if (email.length > 0) {
+                                    _email = email;
+                                  }
+                                  // _email = email;
                                 });
                               },
                               decoration: InputDecoration(
@@ -107,7 +110,10 @@ class _LoginState extends State<LoginMain> {
                             child: TextField(
                               onChanged: (password) {
                                 setState(() {
-                                  _password = password;
+                                  if (password.length > 0) {
+                                    _password = password;
+                                  }
+                                  // _password = password;
                                 });
                               },
                               decoration: InputDecoration(
@@ -135,7 +141,12 @@ class _LoginState extends State<LoginMain> {
                                     padding: EdgeInsets.fromLTRB(
                                         0.0, 15.0, 0.0, 15.0),
                                   ),
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    store.dispatch(login(
+                                        store: store,
+                                        email: _email,
+                                        password: _password));
+                                  },
                                   child: Text('Login',
                                       style: TextStyle(
                                           color: Colors.white,

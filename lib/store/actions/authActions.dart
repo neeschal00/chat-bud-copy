@@ -40,10 +40,20 @@ Future<void> loadUser({Store<ChatState> store, BuildContext context}) async {
 }
 
 //login action
-Future<void> login() async {}
+Future<void> login({
+  Store<ChatState> store,
+  BuildContext context,
+  @required email,
+  @required password,
+}) async {}
 
 //Register action
-Future<void> register() async {
+Future<void> register(
+    {Store<ChatState> store,
+    BuildContext context,
+    @required email,
+    @required password,
+    @required cpassword}) async {
   final url = Uri.parse("http://192.168.1.66:5000/login/user");
   Map<String, String> headers = {
     "Content-type": "application/json",
