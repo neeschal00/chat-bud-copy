@@ -1,5 +1,6 @@
 // import 'dart:html';
 import 'dart:math';
+import 'package:chat_bud/main.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 import "package:redux/redux.dart";
@@ -39,7 +40,79 @@ Future<void> loadUser({Store<ChatState> store, BuildContext context}) async {
 }
 
 //login action
-Future<void> login() {}
+Future<void> login() async {
+  
+}
 
 //Register action
-Future<void> register() {}
+Future<void> register() {
+
+  final url = Uri.parse("http://192.168.1.66:5000/login/user");
+  Map<String, String> headers = {
+    "Content-type": "application/json",
+  };
+
+  String body = jsonEncode({
+    "username": "test",
+    "password": "test",
+    "email": ""}'
+
+  Response response = await post(url, headers: headers);
+  final statusCode = response.statusCode;
+  SharedPreferances prefs = await SharedPreferences.getInstance();
+
+  if (statusCode != 200) {
+    
+    // prefs.setString("apiToken", response.headers["x-signal-token"]);
+    dynamic body = json.decode(response.body);
+    if(body['msg]){
+      prefs.remove("apiToken");
+      store
+    }
+  
+  
+  }
+
+  if (statusCode == 200) {
+    dynamic body = json.decode(response.body);
+    if (body['user'] != null) {
+      store.dispatch(Types.ClearError);
+
+      User user = User(
+          name: body["user"]["name"],
+          email: body["user"]["email"],
+          id: body["user"]["id"]);
+
+      String token = body["token"];
+
+      //set token
+      await prefs.setString("apiToken", token);
+      // prefs.setString("user", json.encode(user));
+
+      //dispatch to store user inside state strore
+      store.dispatch(new UpdateUserAction(user));
+      // store.dispatch(Types.LoadUsers);
+
+      //Redirect to Chats
+      await Future.delayed(Duration(seconds: 3), () {
+        print("about to redirect")
+        // Navigator.pushReplacement(
+        //   context,
+        //   MaterialPageRoute(builder: (context) => UsersList()),
+        // );
+      });
+
+    }
+  }
+
+
+
+}
+
+String generateRandomString(int len) {
+  var r = Random();
+  const _chars =
+      "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+  return List.generate(len, (index) => _chars[r.nextInt(_chars.length)]).join();
+}
