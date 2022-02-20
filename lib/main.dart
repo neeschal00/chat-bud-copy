@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new StoreProvider(
-        // store: store,
+        store: store,
         child: MaterialApp(
             title: 'Flutter Signal App',
             theme: ThemeData(
