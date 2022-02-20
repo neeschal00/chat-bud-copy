@@ -151,7 +151,12 @@ class _LoginState extends State<LoginMain> {
                                     padding: EdgeInsets.fromLTRB(
                                         0.0, 15.0, 0.0, 15.0),
                                   ),
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    Navigator.pushReplacement(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) => Register()));
+                                  },
                                   child: Text('Click here to register',
                                       style: TextStyle(
                                           color: Colors.blue,
