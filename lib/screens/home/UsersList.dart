@@ -1,9 +1,3 @@
-// @dart=2.9
-import "dart:math";
-import "dart:async";
-import "dart:convert";
-import "package:http/http.dart" as http;
-
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:flutter/cupertino.dart';
@@ -34,76 +28,162 @@ class SignalList extends StatefulWidget {
 }
 
 class _SignalListState extends State<SignalList> {
-  Future<List<User>> _getUsers() async {
-    var data =
-        await http.get(Uri.parse("https://jsonplaceholder.typicode.com/users"));
+  Socket socket;
 
-    var jsonData = json.decode(data.body);
+  @override
+  void initState() {
+    super.initState();
+    socketServer();
 
-    List<User> users = [];
+    // Emit to Get all users in Database
+    User currentUser = store.state.user;
+    socket.emit("_getUsers", {'senderEmail': currentUser.email});
 
-    for (var u in jsonData) {
-      // User user = User(u['id'], u['name']);
+    // Gotten users to store
+    socket.on("_allUsers", (allUsers) {
+      List<UserData> users = [];
 
-      // users.add(user);
+      for (var u in allUsers) {
+        UserData _users = UserData(u['_id'], u['email'], u['name']);
+        users.add(_users);
+      }
+
+      users.where((user) => user.email == store.state.user.email).toList();
+
+      store.dispatch(new UpdateAllUserAction(users));
+    });
+  }
+
+  // Socket Connection
+  void socketServer() {
+    try {
+      // Configure socket transports must be sepecified
+      socket = io('http://192.168.0.110:5000', <String, dynamic>{
+        'transports': ['websocket'],
+        'autoConnect': false,
+      });
+
+      // Connect to websocket
+      socket.connect();
+
+      // Handle socket events
+      socket.on('connect', (_) => print('connect: ${socket.id}'));
+    } catch (e) {
+      print(e.toString());
     }
-
-    return users;
   }
 
   @override
   Widget build(BuildContext context) {
-    Color getRandomColor() =>
-        Colors.primaries[Random().nextInt(Colors.primaries.length)];
-
-    return Container(
-      child: FutureBuilder(
-        future: _getUsers(),
-        builder: (BuildContext context, AsyncSnapshot snapshot) {
-          if (snapshot.data == null) {
-            return Container(
-              child: Center(
-                child: Text("Loading..."),
+    return Material(
+      child: SafeArea(
+        child: Scaffold(
+          appBar: AppBar(
+            backgroundColor: Color(0xFF1EA955),
+            leading: CircleAvatar(
+              backgroundColor: Colors.white,
+              radius: 10,
+              child: Text(
+                'SA',
+                style: TextStyle(
+                  fontSize: 10,
+                ),
               ),
-            );
-          } else {
-            return ListView.builder(
-              itemCount: snapshot.data.length,
-              itemBuilder: (BuildContext context, int index) {
-                return InkWell(
-                  splashColor: getRandomColor(),
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => Inbox()),
-                    );
-                  },
-                  child: Ink(
-                    child: ListTile(
-                      leading: CircleAvatar(
-                        backgroundColor: getRandomColor(),
-                        child: Text(snapshot.data[index].name
-                            .substring(0, 2)
-                            .toUpperCase()),
-                      ),
-                      title: Text(snapshot.data[index].name),
-                      subtitle: Text(
-                        '${snapshot.data[index].name} is on Signal',
-                        style: TextStyle(fontSize: 12.0),
-                      ),
-                      trailing: new Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          new Text("Feb 4"),
-                        ],
-                      ),
+            ),
+            title: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Padding(
+                  padding: EdgeInsets.only(left: 10),
+                  child: Text("Samuel", style: TextStyle(fontSize: 14)),
+                ),
+              ],
+            ),
+            actions: <Widget>[
+              Padding(
+                  padding: EdgeInsets.only(right: 20.0),
+                  child: GestureDetector(
+                    onTap: () {},
+                    child: Icon(
+                      FontAwesome.phone,
+                      size: 30.0,
                     ),
-                  ),
-                );
-              },
-            );
-          }
-        },
+                  )),
+            ],
+          ),
+          body: Container(
+            child: Column(children: [
+              StoreConnector<ChatState, List<UserData>>(
+                  converter: (store) => store.state.allUsers,
+                  onWillChange: (prev, next) {},
+                  builder: (_, allUsers) {
+                    if (allUsers == null) {
+                      return Container(
+                          child: Center(
+                        child: Text("Loading Users..."),
+                      ));
+                    }
+
+                    List<dynamic> filteredUsers = allUsers
+                        .where((user) => user.email != store.state.user.email)
+                        .toList();
+
+                    return StoreConnector<ChatState, User>(
+                        converter: (store) => store.state.user,
+                        onWillChange: (prev, next) {},
+                        builder: (_, user) {
+                          return Container(
+                              padding: const EdgeInsets.only(top: 10),
+                              child: ListView.builder(
+                                shrinkWrap: true,
+                                itemCount: filteredUsers.length,
+                                itemBuilder: (BuildContext context, int index) {
+                                  return InkWell(
+                                      splashColor: null,
+                                      onTap: () {
+                                        socket.close();
+
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) => Inbox(
+                                                    senderMe: user.email,
+                                                    receiver:
+                                                        filteredUsers[index]
+                                                            .email,
+                                                  )),
+                                        );
+                                      },
+                                      child: Ink(
+                                          child: ListTile(
+                                        leading: CircleAvatar(
+                                          backgroundColor: null,
+                                          child: Text(filteredUsers[index]
+                                              .name
+                                              .substring(0, 2)
+                                              .toUpperCase()),
+                                        ),
+                                        title: Text(filteredUsers[index].name),
+                                        subtitle: Text(
+                                          filteredUsers[index].name +
+                                              ' is on Signal',
+                                          style: TextStyle(fontSize: 12.0),
+                                        ),
+                                        trailing: new Column(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: <Widget>[
+                                            new Text("date"),
+                                          ],
+                                        ),
+                                      )));
+                                },
+                              ));
+                        });
+                  }),
+            ]),
+          ),
+        ),
       ),
     );
   }

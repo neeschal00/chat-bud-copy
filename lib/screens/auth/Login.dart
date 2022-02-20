@@ -11,7 +11,9 @@ import '../../main.dart';
 class Login extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Container(child: LoginMain());
+    return Container(
+      child: LoginMain(),
+    );
   }
 }
 
@@ -21,155 +23,128 @@ class LoginMain extends StatefulWidget {
 }
 
 class _LoginState extends State<LoginMain> {
+  final LocalStorage storage = new LocalStorage('localstorage_app');
+
   String _email = "";
   String _password = "";
-  bool _isObscure = true;
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: SafeArea(
-        child: Scaffold(
-          body: Container(
-              width: double.infinity,
-              height: double.infinity,
-              // decoration: BoxDecoration(
-              //   image: DecorationImage(
-              //     image: AssetImage('assets/images/signin.png'),
-              //     fit: BoxFit.cover,
-              //   ),
-              // ),
-              child: SingleChildScrollView(
-                child: Column(
-                  children: [
-                    Container(
-                      margin: EdgeInsets.only(top: 100),
-                      padding: EdgeInsets.only(left: 52, right: 52, bottom: 10),
-                      width: 200,
-                      decoration: BoxDecoration(
-                        image: DecorationImage(
-                          image: AssetImage('assets/images/signin.png'),
-                          fit: BoxFit.fitHeight,
-                        ),
-                      ),
-                      child: SizedBox(
-                        height: 100.0,
-                        child: null,
-                      ),
-                    ),
-                    //error messages
-                    StoreConnector<ChatState, String>(
-                      converter: (store) => store.state.errMsg,
-                      onWillChange: (prev, next) {},
-                      builder: (_, errMsg) {
-                        return Container(
-                          margin: EdgeInsets.only(top: 10),
-                          child: Text(
-                            "$errMsg",
-                            style: TextStyle(
-                              color: Colors.red,
-                              fontSize: 12,
-                            ),
-                          ),
-                        );
-                      },
-                    ),
-                    //INputes container
-                    Container(
-                      margin: const EdgeInsets.only(top: 2.0),
-                      padding: EdgeInsets.only(left: 30, right: 30),
-                      child: Column(
-                        children: [
-                          Padding(
-                            padding: EdgeInsets.only(top: 20),
-                            child: TextField(
-                              onChanged: (email) {
-                                setState(() {
-                                  if (email.length > 0) {
-                                    _email = email;
-                                  }
-                                  // _email = email;
-                                });
-                              },
-                              decoration: InputDecoration(
-                                border: OutlineInputBorder(
-                                    borderSide: new BorderSide(
-                                  color: Color(0xffC4C4C4),
-                                  width: 2,
-                                )),
-                                hintText: "email@email.com",
-                                hintStyle: TextStyle(
-                                    color: Color(0xffC4C4C4),
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.w400),
-                              ),
-                              textCapitalization: TextCapitalization.none,
-                            ),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.only(top: 20),
-                            child: TextField(
-                              onChanged: (password) {
-                                setState(() {
-                                  if (password.length > 0) {
-                                    _password = password;
-                                  }
-                                  // _password = password;
-                                });
-                              },
-                              obscureText: _isObscure,
-                              decoration: InputDecoration(
-                                suffixIcon: IconButton(
-                                    icon: Icon(_isObscure
-                                        ? Icons.visibility
-                                        : Icons.visibility_off),
-                                    onPressed: () {
+        home: SafeArea(
+            child: Scaffold(
+                body: Container(
+                    width: double.infinity,
+                    height: double.infinity,
+                    //   decoration: BoxDecoration(
+                    //     image: DecorationImage(
+                    //       image: AssetImage("assets/images/bgmain.png"),
+                    //       fit: BoxFit.cover,
+                    //     ),
+                    // ),
+                    child: SingleChildScrollView(
+                        child: Column(
+                      children: [
+                        Container(
+                            margin: EdgeInsets.only(top: 100),
+                            padding: EdgeInsets.only(
+                                left: 52, right: 52, bottom: 10),
+                            width: 200,
+                            decoration: BoxDecoration(
+                                image: DecorationImage(
+                                    image: AssetImage("images/signin.png"),
+                                    fit: BoxFit.fitHeight)),
+                            child: SizedBox(
+                              height: 100.0,
+                              child: null,
+                            )),
+                        StoreConnector<ChatState, String>(
+                            converter: (store) => store.state.errMsg,
+                            onWillChange: (prev, next) {},
+                            builder: (_, errMsg) {
+                              return Container(
+                                padding: const EdgeInsets.only(top: 10),
+                                child: Text(
+                                  "$errMsg",
+                                  style: TextStyle(color: Color(0xffff4500)),
+                                ),
+                              );
+                            }),
+                        Container(
+                            margin: const EdgeInsets.only(top: 2),
+                            padding: const EdgeInsets.only(left: 30, right: 30),
+                            child: Column(children: [
+                              Padding(
+                                  padding: EdgeInsets.only(top: 20.0),
+                                  child: TextField(
+                                    onChanged: (email) {
                                       setState(() {
-                                        _isObscure = !_isObscure;
+                                        _email = email;
                                       });
-                                    }),
-                                border: OutlineInputBorder(
-                                    borderSide: new BorderSide(
-                                  color: Color(0xffC4C4C4),
-                                  width: 2,
-                                )),
-                                hintText: "*******",
-                                hintStyle: TextStyle(
-                                    color: Color(0xffC4C4C4),
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.w400),
-                              ),
-                              textCapitalization: TextCapitalization.none,
-                            ),
-                          ),
-                          Container(
-                              margin: EdgeInsets.all(25),
-                              width: MediaQuery.of(context).size.width * 0.60,
-                              child: TextButton(
+                                    },
+                                    decoration: InputDecoration(
+                                      border: OutlineInputBorder(
+                                          borderSide: new BorderSide(
+                                              color: Color(0xffC4C4C4),
+                                              width: 2)),
+                                      hintText: 'Myname@gmail.com',
+                                      hintStyle: TextStyle(fontSize: 15.0),
+                                    ),
+                                    textCapitalization: TextCapitalization.none,
+                                  )),
+                              Padding(
+                                  padding: EdgeInsets.only(top: 20.0),
+                                  child: TextField(
+                                    onChanged: (password) {
+                                      setState(() {
+                                        _password = password;
+                                      });
+                                    },
+                                    decoration: InputDecoration(
+                                        border: OutlineInputBorder(
+                                            borderSide: new BorderSide(
+                                                color: Color(0xffC4C4C4),
+                                                width: 2)),
+                                        hintText: 'Password',
+                                        hintStyle: TextStyle(
+                                          fontSize: 15.0,
+                                        )),
+                                    textCapitalization: TextCapitalization.none,
+                                  )),
+                              Container(
+                                margin: EdgeInsets.all(25),
+                                width: MediaQuery.of(context).size.width * 0.60,
+                                child: TextButton(
                                   style: TextButton.styleFrom(
-                                    primary: Colors.red,
-                                    backgroundColor: Color(0xff474EF41),
+                                    primary: Colors.red, // foreground
+                                    backgroundColor: Color(0xff474EF4),
                                     padding: EdgeInsets.fromLTRB(
                                         0.0, 15.0, 0.0, 15.0),
                                   ),
                                   onPressed: () {
                                     store.dispatch(login(
-                                        store: store,
                                         email: _email,
-                                        password: _password));
+                                        password: _password,
+                                        storage: storage,
+                                        store: store,
+                                        context: context));
                                   },
-                                  child: Text('Login',
-                                      style: TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 15,
-                                          fontWeight: FontWeight.bold)))),
-                          Container(
-                              margin: EdgeInsets.all(25),
-                              width: MediaQuery.of(context).size.width * 0.60,
-                              child: TextButton(
+                                  child: Text(
+                                    'Login',
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 15.0,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                ),
+                              ),
+                              Container(
+                                margin: EdgeInsets.only(top: 5),
+                                width: MediaQuery.of(context).size.width * 0.60,
+                                child: TextButton(
                                   style: TextButton.styleFrom(
-                                    primary: Colors.red,
-                                    backgroundColor: Color(0xFFFFFFFF),
+                                    primary: Colors.red, // foreground
+                                    backgroundColor: Color(0xffffffff),
                                     padding: EdgeInsets.fromLTRB(
                                         0.0, 15.0, 0.0, 15.0),
                                   ),
@@ -179,19 +154,19 @@ class _LoginState extends State<LoginMain> {
                                         MaterialPageRoute(
                                             builder: (context) => Register()));
                                   },
-                                  child: Text('Click here to register',
-                                      style: TextStyle(
-                                          color: Colors.blue,
-                                          fontSize: 15,
-                                          fontWeight: FontWeight.bold)))),
-                        ],
-                      ),
-                    )
-                  ],
-                ),
-              )),
-        ),
-      ),
-    );
+                                  child: Text(
+                                    'Click here to register',
+                                    style: TextStyle(
+                                        color: Colors.blue,
+                                        fontSize: 12.0,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                ),
+                              )
+                            ]))
+                      ],
+                    ))))));
   }
 }
+
+typedef void LoginClick();
