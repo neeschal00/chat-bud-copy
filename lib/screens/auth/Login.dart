@@ -11,7 +11,7 @@ import '../../main.dart';
 class Login extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Container(child: null);
+    return Container(child: LoginMain());
   }
 }
 
@@ -27,17 +27,35 @@ class _LoginState extends State<LoginMain> {
       home: SafeArea(
         child: Scaffold(
           body: Container(
-            width: double.infinity,
-            height: double.infinity,
-            child: Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Text("Login"),
-                ],
+              width: double.infinity,
+              height: double.infinity,
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage('assets/images/sigin.png'),
+                  fit: BoxFit.cover,
+                ),
               ),
-            ),
-          ),
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    Container(
+                      margin: EdgeInsets.only(top: 100),
+                      padding: EdgeInsets.only(left: 52, right: 52, bottom: 10),
+                      width: 200,
+                      decoration: BoxDecoration(
+                        image: DecorationImage(
+                          image: AssetImage('assets/images/signin.png'),
+                          fit: BoxFit.fitHeight,
+                        ),
+                      ),
+                      child: SizedBox(
+                        height: 100.0,
+                        child: null,
+                      ),
+                    ),
+                  ],
+                ),
+              )),
         ),
       ),
     );
