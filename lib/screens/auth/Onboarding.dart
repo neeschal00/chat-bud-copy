@@ -31,6 +31,17 @@ class _OnboardingState extends State<Onboarding> {
           body: Container(
         width: double.infinity,
         height: double.infinity,
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [
+              Color(0xFFFBB034),
+              Color(0xFFF78E1E),
+              Color(0xFFF06016),
+            ],
+          ),
+        ),
         child: Text('Onboarding'),
       )),
     );
