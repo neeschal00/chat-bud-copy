@@ -40,73 +40,60 @@ Future<void> loadUser({Store<ChatState> store, BuildContext context}) async {
 }
 
 //login action
-Future<void> login() async {
-  
-}
+Future<void> login() async {}
 
 //Register action
-Future<void> register() {
-
+Future<void> register() async {
   final url = Uri.parse("http://192.168.1.66:5000/login/user");
   Map<String, String> headers = {
     "Content-type": "application/json",
   };
 
-  String body = jsonEncode({
-    "username": "test",
-    "password": "test",
-    "email": ""}'
+  String body = "";
 
   Response response = await post(url, headers: headers);
   final statusCode = response.statusCode;
-  SharedPreferances prefs = await SharedPreferences.getInstance();
+  SharedPreferences prefs = await SharedPreferences.getInstance();
 
   if (statusCode != 200) {
-    
     // prefs.setString("apiToken", response.headers["x-signal-token"]);
     dynamic body = json.decode(response.body);
-    if(body['msg]){
+    if (body['msg'] != "") {
       prefs.remove("apiToken");
-      store
+      store.dispatch(new UpdateErrorAction(body['msg']));
     }
-  
-  
-  }
 
-  if (statusCode == 200) {
-    dynamic body = json.decode(response.body);
-    if (body['user'] != null) {
-      store.dispatch(Types.ClearError);
+    if (statusCode == 200) {
+      dynamic body = json.decode(response.body);
+      if (body['user'] != null) {
+        store.dispatch(Types.ClearError);
 
-      User user = User(
-          name: body["user"]["name"],
-          email: body["user"]["email"],
-          id: body["user"]["id"]);
+        User user = User(
+            name: body["user"]["name"],
+            email: body["user"]["email"],
+            id: body["user"]["id"]);
 
-      String token = body["token"];
+        String token = body["token"];
 
-      //set token
-      await prefs.setString("apiToken", token);
-      // prefs.setString("user", json.encode(user));
+        //set token
+        await prefs.setString("apiToken", token);
+        // prefs.setString("user", json.encode(user));
 
-      //dispatch to store user inside state strore
-      store.dispatch(new UpdateUserAction(user));
-      // store.dispatch(Types.LoadUsers);
+        //dispatch to store user inside state strore
+        store.dispatch(new UpdateUserAction(user));
+        // store.dispatch(Types.LoadUsers);
 
-      //Redirect to Chats
-      await Future.delayed(Duration(seconds: 3), () {
-        print("about to redirect")
-        // Navigator.pushReplacement(
-        //   context,
-        //   MaterialPageRoute(builder: (context) => UsersList()),
-        // );
-      });
-
+        //Redirect to Chats
+        await Future.delayed(Duration(seconds: 3), () {
+          print("about to redirect");
+          // Navigator.pushReplacement(
+          //   context,
+          //   MaterialPageRoute(builder: (context) => UsersList()),
+          // );
+        });
+      }
     }
   }
-
-
-
 }
 
 String generateRandomString(int len) {
