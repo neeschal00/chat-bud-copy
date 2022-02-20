@@ -23,6 +23,7 @@ class LoginMain extends StatefulWidget {
 class _LoginState extends State<LoginMain> {
   String _email = "";
   String _password = "";
+  bool _isObscure = true;
 
   @override
   Widget build(BuildContext context) {
@@ -32,12 +33,12 @@ class _LoginState extends State<LoginMain> {
           body: Container(
               width: double.infinity,
               height: double.infinity,
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage('assets/images/sigin.png'),
-                  fit: BoxFit.cover,
-                ),
-              ),
+              // decoration: BoxDecoration(
+              //   image: DecorationImage(
+              //     image: AssetImage('assets/images/signin.png'),
+              //     fit: BoxFit.cover,
+              //   ),
+              // ),
               child: SingleChildScrollView(
                 child: Column(
                   children: [
@@ -116,7 +117,17 @@ class _LoginState extends State<LoginMain> {
                                   // _password = password;
                                 });
                               },
+                              obscureText: _isObscure,
                               decoration: InputDecoration(
+                                suffixIcon: IconButton(
+                                    icon: Icon(_isObscure
+                                        ? Icons.visibility
+                                        : Icons.visibility_off),
+                                    onPressed: () {
+                                      setState(() {
+                                        _isObscure = !_isObscure;
+                                      });
+                                    }),
                                 border: OutlineInputBorder(
                                     borderSide: new BorderSide(
                                   color: Color(0xffC4C4C4),

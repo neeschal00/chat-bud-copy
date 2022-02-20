@@ -63,6 +63,12 @@ ChatState authReducer(ChatState state, dynamic action) {
 
 //Reset Reducer
 ChatState resetReducer(ChatState state, dynamic action) {
+  switch (action) {
+    case Types.ClearError:
+      return state.copyWith(errMsg: null);
+    case Types.IsAuthenticated:
+      return state.copyWith(isAuthenticated: true);
+  }
   return state;
 }
 

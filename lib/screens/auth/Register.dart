@@ -116,6 +116,7 @@ class _RegisterState extends State<RegisterMain> {
                                   // _password = password;
                                 });
                               },
+                              obscureText: true,
                               decoration: InputDecoration(
                                 border: OutlineInputBorder(
                                     borderSide: new BorderSide(
@@ -142,6 +143,7 @@ class _RegisterState extends State<RegisterMain> {
                                   // _cpassword = password;
                                 });
                               },
+                              obscureText: true,
                               decoration: InputDecoration(
                                 border: OutlineInputBorder(
                                     borderSide: new BorderSide(
@@ -167,7 +169,13 @@ class _RegisterState extends State<RegisterMain> {
                                     padding: EdgeInsets.fromLTRB(
                                         0.0, 15.0, 0.0, 15.0),
                                   ),
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    store.dispatch(register(
+                                        store: store,
+                                        email: _email,
+                                        password: _password,
+                                        cpassword: _cpassword));
+                                  },
                                   child: Text('Register',
                                       style: TextStyle(
                                           color: Colors.white,
