@@ -34,10 +34,7 @@ class _SplashScreenState extends State<SplashScreen> {
       backgroundColor: Color(0xFF100E20),
       body: Container(
         child: Center(
-          child: Text(
-            "Chatify",
-            style: TextStyle(color: Colors.white, fontSize: 30.0),
-          ),
+          child: Image.asset("assets/images/launch_image.png"),
         ),
       ),
     );

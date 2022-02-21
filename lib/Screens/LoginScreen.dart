@@ -47,7 +47,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   Center(
                     child: Text(
-                      "Chat With Whom You Really Want To !......",
+                      "Start Your Chatting Journey",
                       style: TextStyle(color: Colors.white, fontSize: 18),
                     ),
                   )
@@ -116,7 +116,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         height: 50,
                         margin: EdgeInsets.symmetric(horizontal: 50),
                         decoration: BoxDecoration(
-                          color: Colors.cyan[500],
+                          color: Colors.blue[900],
                           borderRadius: BorderRadius.circular(10),
                         ),
                         child: Center(

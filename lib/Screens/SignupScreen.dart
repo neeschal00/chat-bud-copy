@@ -29,6 +29,8 @@ class _SignupScreenState extends State<SignupScreen> {
     var utils = Provider.of<UtilityNotifier>(context, listen: false);
     var userImage =
         Provider.of<UtilityNotifier>(context, listen: true).userimage;
+
+    bool _obscureText = false;
     return Scaffold(
       backgroundColor: Color(0xFF100E20),
       resizeToAvoidBottomInset: false,
@@ -69,7 +71,7 @@ class _SignupScreenState extends State<SignupScreen> {
                   ),
                   Center(
                     child: Text(
-                      "Welcome to Chatify",
+                      "Welcome to ChatBud",
                       style: TextStyle(color: Colors.white, fontSize: 18),
                     ),
                   )
@@ -148,15 +150,27 @@ class _SignupScreenState extends State<SignupScreen> {
                                             BorderSide(color: Colors.grey))),
                                 child: TextFormField(
                                   controller: passwordController,
+                                  obscureText: true,
                                   validator: (value) {
                                     if (passwordController.text.length < 6) {
                                       return "Password Should be Mininum of Length 6";
                                     }
                                   },
                                   decoration: InputDecoration(
-                                      hintText: "Enter your password",
-                                      hintStyle: TextStyle(color: Colors.grey),
-                                      border: InputBorder.none),
+                                    hintText: "Enter your password",
+                                    hintStyle: TextStyle(color: Colors.grey),
+                                    border: InputBorder.none,
+                                    suffixIcon: new GestureDetector(
+                                      onTap: () {
+                                        setState(() {
+                                          _obscureText = !_obscureText;
+                                        });
+                                      },
+                                      child: new Icon(_obscureText
+                                          ? Icons.visibility
+                                          : Icons.visibility_off),
+                                    ),
+                                  ),
                                 ),
                               ),
                             ],
@@ -182,7 +196,7 @@ class _SignupScreenState extends State<SignupScreen> {
                         height: 50,
                         margin: EdgeInsets.symmetric(horizontal: 50),
                         decoration: BoxDecoration(
-                          color: Colors.cyan[500],
+                          color: Colors.blue[900],
                           borderRadius: BorderRadius.circular(10),
                         ),
                         child: Center(
