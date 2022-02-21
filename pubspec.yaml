@@ -48,6 +48,8 @@ dependencies:
   intl: ^0.17.0
   uuid: ^3.0.6
   fluttertoast: ^8.0.9
+  lottie: ^1.2.2
+  introduction_screen: ^3.0.0
 
 dev_dependencies:
   flutter_test:

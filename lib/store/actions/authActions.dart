@@ -16,7 +16,7 @@ Future<void> loadUser(
   SharedPreferences prefs = await SharedPreferences.getInstance();
   String _token = prefs.getString("apiToken") ?? null;
 
-  final url = Uri.parse('http://192.168.0.110:5000/login/user');
+  final url = Uri.parse('http://192.168.1.66:5000/login/user');
   Map<String, String> headers = {
     "Content-type": "application/json",
     "x-signal-token": _token
@@ -54,7 +54,7 @@ Future<void> login(
     password,
     BuildContext context,
     storage}) async {
-  final url = Uri.parse('http://192.168.0.110:5000/login');
+  final url = Uri.parse('http://192.168.1.66:5000/login');
   Map<String, String> headers = {"Content-type": "application/json"};
   String data = '{"email": "' + email + '", "password": "' + password + '"}';
   SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -105,7 +105,7 @@ Future<void> register(
     password,
     cpassword,
     BuildContext context}) async {
-  final url = Uri.parse('http://192.168.0.110:5000/users');
+  final url = Uri.parse('http://192.168.1.66:5000/users');
   Map<String, String> headers = {"Content-type": "application/json"};
   String data = '{"email": "' +
       email +

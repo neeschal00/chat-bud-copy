@@ -58,7 +58,7 @@ class _SignalListState extends State<SignalList> {
   void socketServer() {
     try {
       // Configure socket transports must be sepecified
-      socket = io('http://192.168.0.110:5000', <String, dynamic>{
+      socket = io('http://192.168.1.66:5000', <String, dynamic>{
         'transports': ['websocket'],
         'autoConnect': false,
       });
