@@ -6,7 +6,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:chat_bud/Model/Message.dart';
 
 class MessageNotifierProvider extends ChangeNotifier {
-  String url = "http://192.168.1.66:4000/";
+  String url = "http://192.168.1.66:4000";
 
   List<Messages>? m = [];
   List<Messages> get messages => m!;

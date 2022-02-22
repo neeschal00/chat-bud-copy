@@ -6,7 +6,7 @@ import 'package:http/http.dart' as http;
 import 'package:chat_bud/Model/ChatModel.dart';
 
 class ChatsNotifierProvider extends ChangeNotifier {
-  String url = "http://192.168.1.66:4000/";
+  String url = "http://192.168.1.66:4000";
   List<Data>? d = [];
   List<Data> get chats => d!;
 
