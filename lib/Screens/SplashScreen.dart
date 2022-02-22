@@ -34,10 +34,9 @@ class _SplashScreenState extends State<SplashScreen> {
       backgroundColor: Color(0xFF100E20),
       body: Container(
         child: Center(
-          child: Image(
-            image: AssetImage('assets/images/launch_image.png'),
-            height: 200,
-            width: 200,
+          child: Text(
+            "Chat Bud",
+            style: TextStyle(color: Colors.white, fontSize: 30.0),
           ),
         ),
       ),

@@ -24,7 +24,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
     return Scaffold(
         backgroundColor: Color(0xFF100E20),
         appBar: AppBar(
-          backgroundColor: Colors.purple[400],
+          backgroundColor: Colors.blue[900],
           automaticallyImplyLeading: false,
           centerTitle: true,
           title: Text("Chatify"),

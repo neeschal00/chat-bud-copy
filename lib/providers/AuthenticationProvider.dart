@@ -6,7 +6,7 @@ import 'package:chat_bud/Model/User.dart';
 import 'package:chat_bud/views/Home.dart';
 
 class AuthenticationProvider extends ChangeNotifier {
-  String url = "http://192.168.1.66:4000";
+  String url = "https://chatharshit.herokuapp.com";
 
   Future userSignup(BuildContext context, String name, String email,
       String password, String pic) async {

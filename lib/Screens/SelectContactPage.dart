@@ -26,7 +26,7 @@ class _SelectContactState extends State<SelectContact> {
           } else if (!snapshot.hasData) {
             return Scaffold(
               appBar: AppBar(
-                backgroundColor: Colors.cyan,
+                backgroundColor: Colors.blue[900],
                 leading: IconButton(
                     onPressed: () {
                       Navigator.pushReplacement(context,

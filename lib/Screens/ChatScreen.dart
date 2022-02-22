@@ -20,20 +20,6 @@ class _ChatScreenState extends State<ChatScreen> {
     super.initState();
   }
 
-  // List<ChatModel> chats = [
-  //   ChatModel(
-  //       name: "Harshit Rathi",
-  //       currentMessage: "Hii",
-  //       icon: "p.png",
-  //       isGroup: false,
-  //       time: "11.05"),
-  //   ChatModel(
-  //       name: "Dipika Biyani",
-  //       currentMessage: "Hii",
-  //       icon: "p.png",
-  //       isGroup: false,
-  //       time: "11.05"),
-  // ];
   @override
   Widget build(BuildContext context) {
     //  CourseProvider courseProvider(bool renderUi) =>
