@@ -10,6 +10,8 @@ import 'package:chat_bud/providers/MessageProvider.dart';
 import 'package:chat_bud/providers/UsersProvider.dart';
 import 'package:chat_bud/views/Home.dart';
 import 'package:provider/provider.dart';
+import 'package:hive/hive.dart';
+// import 'package:hive_flutter/hive_flutter.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
