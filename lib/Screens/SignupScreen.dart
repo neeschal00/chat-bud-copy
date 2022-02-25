@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shake/shake.dart';
 import 'package:provider/provider.dart';
 import 'package:chat_bud/Screens/LoginScreen.dart';
 import 'package:chat_bud/Services/Utility.dart';
@@ -15,6 +16,21 @@ class _SignupScreenState extends State<SignupScreen> {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   TextEditingController nameController = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+    ShakeDetector.autoStart(
+      onPhoneShake: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => LoginScreen(),
+          ),
+        );
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {

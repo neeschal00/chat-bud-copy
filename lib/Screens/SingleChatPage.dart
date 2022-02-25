@@ -121,7 +121,7 @@ class _SingleChatPageState extends State<SingleChatPage> {
             appBar: PreferredSize(
               preferredSize: Size.fromHeight(60),
               child: AppBar(
-                backgroundColor: Colors.cyan,
+                backgroundColor: Colors.blue[900],
                 leadingWidth: 70,
                 titleSpacing: 0,
                 leading: InkWell(

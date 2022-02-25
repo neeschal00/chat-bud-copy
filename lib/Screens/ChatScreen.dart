@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shake/shake.dart';
 import 'package:provider/provider.dart';
 import 'package:chat_bud/Model/ChatModel.dart';
 import 'package:chat_bud/Screens/SelectContactPage.dart';
@@ -18,6 +19,16 @@ class _ChatScreenState extends State<ChatScreen> {
   void initState() {
     Provider.of<ChatsNotifierProvider>(context, listen: false).getUserChats();
     super.initState();
+    ShakeDetector detector = ShakeDetector.autoStart(
+      onPhoneShake: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => SelectContact(),
+          ),
+        );
+      },
+    );
   }
 
   @override
