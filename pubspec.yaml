@@ -45,13 +45,15 @@ dependencies:
   cloudinary_sdk: ^3.0.1+7
   sqflite: ^2.0.2
   shake: ^1.0.1
-  hive: ^2.0.6
   toast: ^0.1.5
   all_sensors: ^0.3.1+2
   proximity_sensor: ^1.0.2
-
-dependency_overrides:
-  path: 1.8.1
+  hive_flutter: ^0.3.1
+  hive: ^1.0.0
+  # path_provider: ^1.6.28
+  
+# dependency_overrides:
+#   path: 1.8.1
 
 dev_dependencies:
   flutter_test:
@@ -80,10 +82,10 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - images/
-    - lottie/
-    - icons/
-  #   - images/a_dot_ham.jpeg
+    - assets/images/
+    - assets/lottie/
+    - assets/icons/
+    # - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
