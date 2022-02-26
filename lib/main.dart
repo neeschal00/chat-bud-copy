@@ -30,17 +30,17 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new StoreProvider(
-        // store: store,
+        store: store,
         child: MaterialApp(
             title: 'Flutter Signal App',
             theme: ThemeData(
               primarySwatch: Colors.blue,
               visualDensity: VisualDensity.adaptivePlatformDensity,
             ),
-            initialRoute: "onboarding",
+            initialRoute: "login",
             routes: {
               "onboarding": (BuildContext context) => Onboarding(),
-              // "login": (BuildContext context) => Login(),
+              "login": (BuildContext context) => Login(),
             },
             home: SafeArea(
               child: Scaffold(),

@@ -11,7 +11,7 @@ import '../../main.dart';
 class Login extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Container(child: null);
+    return Container(child: LoginMain());
   }
 }
 
@@ -21,23 +21,153 @@ class LoginMain extends StatefulWidget {
 }
 
 class _LoginState extends State<LoginMain> {
+  String _email = "";
+  String _password = "";
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: SafeArea(
         child: Scaffold(
           body: Container(
-            width: double.infinity,
-            height: double.infinity,
-            child: Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Text("Login"),
-                ],
+              width: double.infinity,
+              height: double.infinity,
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage('assets/images/sigin.png'),
+                  fit: BoxFit.cover,
+                ),
               ),
-            ),
-          ),
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    Container(
+                      margin: EdgeInsets.only(top: 100),
+                      padding: EdgeInsets.only(left: 52, right: 52, bottom: 10),
+                      width: 200,
+                      decoration: BoxDecoration(
+                        image: DecorationImage(
+                          image: AssetImage('assets/images/signin.png'),
+                          fit: BoxFit.fitHeight,
+                        ),
+                      ),
+                      child: SizedBox(
+                        height: 100.0,
+                        child: null,
+                      ),
+                    ),
+                    //error messages
+                    StoreConnector<ChatState, String>(
+                      converter: (store) => store.state.errMsg,
+                      onWillChange: (prev, next) {},
+                      builder: (_, errMsg) {
+                        return Container(
+                          margin: EdgeInsets.only(top: 10),
+                          child: Text(
+                            "$errMsg",
+                            style: TextStyle(
+                              color: Colors.red,
+                              fontSize: 12,
+                            ),
+                          ),
+                        );
+                      },
+                    ),
+                    //INputes container
+                    Container(
+                      margin: const EdgeInsets.only(top: 2.0),
+                      padding: EdgeInsets.only(left: 30, right: 30),
+                      child: Column(
+                        children: [
+                          Padding(
+                            padding: EdgeInsets.only(top: 20),
+                            child: TextField(
+                              onChanged: (email) {
+                                setState(() {
+                                  _email = email;
+                                });
+                              },
+                              decoration: InputDecoration(
+                                border: OutlineInputBorder(
+                                    borderSide: new BorderSide(
+                                  color: Color(0xffC4C4C4),
+                                  width: 2,
+                                )),
+                                hintText: "email@email.com",
+                                hintStyle: TextStyle(
+                                    color: Color(0xffC4C4C4),
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w400),
+                              ),
+                              textCapitalization: TextCapitalization.none,
+                            ),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.only(top: 20),
+                            child: TextField(
+                              onChanged: (password) {
+                                setState(() {
+                                  _password = password;
+                                });
+                              },
+                              decoration: InputDecoration(
+                                border: OutlineInputBorder(
+                                    borderSide: new BorderSide(
+                                  color: Color(0xffC4C4C4),
+                                  width: 2,
+                                )),
+                                hintText: "*******",
+                                hintStyle: TextStyle(
+                                    color: Color(0xffC4C4C4),
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w400),
+                              ),
+                              textCapitalization: TextCapitalization.none,
+                            ),
+                          ),
+                          Container(
+                              margin: EdgeInsets.all(25),
+                              width: MediaQuery.of(context).size.width * 0.60,
+                              child: TextButton(
+                                  style: TextButton.styleFrom(
+                                    primary: Colors.red,
+                                    backgroundColor: Color(0xff474EF41),
+                                    padding: EdgeInsets.fromLTRB(
+                                        0.0, 15.0, 0.0, 15.0),
+                                  ),
+                                  onPressed: () {},
+                                  child: Text('Login',
+                                      style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 15,
+                                          fontWeight: FontWeight.bold)))),
+                          Container(
+                              margin: EdgeInsets.all(25),
+                              width: MediaQuery.of(context).size.width * 0.60,
+                              child: TextButton(
+                                  style: TextButton.styleFrom(
+                                    primary: Colors.red,
+                                    backgroundColor: Color(0xFFFFFFFF),
+                                    padding: EdgeInsets.fromLTRB(
+                                        0.0, 15.0, 0.0, 15.0),
+                                  ),
+                                  onPressed: () {
+                                    Navigator.pushReplacement(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) => Register()));
+                                  },
+                                  child: Text('Click here to register',
+                                      style: TextStyle(
+                                          color: Colors.blue,
+                                          fontSize: 15,
+                                          fontWeight: FontWeight.bold)))),
+                        ],
+                      ),
+                    )
+                  ],
+                ),
+              )),
         ),
       ),
     );
