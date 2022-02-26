@@ -54,6 +54,10 @@ class ChatState {
 
 //Auth reducer
 ChatState authReducer(ChatState state, dynamic action) {
+  if (action is UpdateErrorAction) {
+    return state.copyWith(errMsg: action.error);
+    // print(action.error);
+  }
   return state;
 }
 
