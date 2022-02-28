@@ -11,6 +11,20 @@ import 'package:chat_bud/providers/MessageProvider.dart';
 import 'package:chat_bud/views/Home.dart';
 import 'package:socket_io_client/socket_io_client.dart' as IO;
 import 'package:timeago/timeago.dart';
+import 'package:awesome_notifications/awesome_notifications.dart';
+
+void notify(String title, String body) async {
+  await AwesomeNotifications().createNotification(
+    content: NotificationContent(
+        id: 1,
+        channelKey: 'key1',
+        title: title,
+        body: body,
+        notificationLayout: NotificationLayout.BigPicture,
+        bigPicture:
+            'https://images.idgesg.net/images/article/2019/01/android-q-notification-inbox-100785464-large.jpg?auto=webp&quality=85,70'),
+  );
+}
 
 class SingleChatPage extends StatefulWidget {
   final String? chatId;
@@ -72,8 +86,8 @@ class _SingleChatPageState extends State<SingleChatPage> {
       socket!.on("getMessage", (n) {
         _scrollController.animateTo(_scrollController.position.maxScrollExtent,
             duration: Duration(milliseconds: 300), curve: Curves.easeOut);
-        // print(n);
-        // print(Messages.fromJson(n).content);
+        print(n);
+        print(Messages.fromJson(n).content);
         // getMessages();
 
         Provider.of<MessageNotifierProvider>(context, listen: false)
@@ -297,6 +311,8 @@ class _SingleChatPageState extends State<SingleChatPage> {
                                             widget.otherUserId,
                                             _controller.text
                                           });
+                                          notify(widget.otherUserId,
+                                              _controller.text); //send notif
 
                                           _controller.clear();
                                           setState(() {

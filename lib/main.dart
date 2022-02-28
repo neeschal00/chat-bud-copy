@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'package:chat_bud/Model/User.dart';
 import 'package:chat_bud/Screens/CameraScreen.dart';
 import 'package:chat_bud/Screens/SignupScreen.dart';
@@ -11,8 +12,22 @@ import 'package:chat_bud/providers/UsersProvider.dart';
 import 'package:chat_bud/views/Home.dart';
 import 'package:provider/provider.dart';
 import 'package:hive/hive.dart';
+import 'package:awesome_notifications/awesome_notifications.dart';
 
 Future<void> main() async {
+  AwesomeNotifications().initialize(null, // icon for your app notification
+      [
+        NotificationChannel(
+            channelKey: 'key1',
+            channelName: 'Proto Coders Point',
+            channelDescription: "Notification example",
+            defaultColor: const Color(0XFF9050DD),
+            ledColor: Colors.white,
+            playSound: true,
+            enableLights: true,
+            importance: NotificationImportance.High,
+            enableVibration: true)
+      ]);
   WidgetsFlutterBinding.ensureInitialized();
   runApp(MyApp());
 }

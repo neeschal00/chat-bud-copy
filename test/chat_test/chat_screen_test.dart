@@ -1,3 +1,4 @@
+// @dart=2.9
 import 'package:chat_bud/Screens/ChatScreen.dart';
 import 'package:chat_bud/Screens/SelectContactPage.dart';
 import 'package:flutter/cupertino.dart';
