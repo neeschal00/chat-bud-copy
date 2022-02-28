@@ -126,6 +126,7 @@ class _SignupScreenState extends State<SignupScreen> {
                                         bottom:
                                             BorderSide(color: Colors.grey))),
                                 child: TextFormField(
+                                  key: Key('name'),
                                   controller: nameController,
                                   validator: (value) {
                                     if (nameController.text.isEmpty) {
@@ -145,6 +146,7 @@ class _SignupScreenState extends State<SignupScreen> {
                                         bottom:
                                             BorderSide(color: Colors.grey))),
                                 child: TextFormField(
+                                  key: Key('email'),
                                   controller: emailController,
                                   validator: (text) {
                                     if (!validateEmail(
@@ -166,6 +168,7 @@ class _SignupScreenState extends State<SignupScreen> {
                                             BorderSide(color: Colors.grey))),
                                 child: TextFormField(
                                   controller: passwordController,
+                                  key: Key('password'),
                                   obscureText: true,
                                   validator: (value) {
                                     if (passwordController.text.length < 6) {

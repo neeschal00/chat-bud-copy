@@ -98,6 +98,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 border: Border(
                                     bottom: BorderSide(color: Colors.grey))),
                             child: TextField(
+                              key: Key('email'),
                               controller: emailController,
                               decoration: InputDecoration(
                                   hintText: "Enter your email",
@@ -112,6 +113,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                     bottom: BorderSide(color: Colors.grey))),
                             child: TextField(
                               controller: passwordController,
+                              key: Key('password'),
                               decoration: InputDecoration(
                                   hintText: "Enter your password",
                                   hintStyle: TextStyle(color: Colors.grey),
@@ -129,6 +131,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             .login(context, emailController.text,
                                 passwordController.text);
                       },
+                      key: Key('login'),
                       child: Container(
                         height: 50,
                         margin: EdgeInsets.symmetric(horizontal: 50),

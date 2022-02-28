@@ -1,3 +1,4 @@
+import 'package:proximity_sensor/proximity_sensor.dart';
 import 'package:flutter/material.dart';
 import 'package:shake/shake.dart';
 import 'package:provider/provider.dart';
@@ -6,6 +7,8 @@ import 'package:chat_bud/Screens/SelectContactPage.dart';
 import 'package:chat_bud/Widgets/Card.dart';
 import 'package:chat_bud/Widgets/ContactCard.dart';
 import 'package:chat_bud/providers/ChatsProvider.dart';
+import 'package:flutter/foundation.dart' as foundation;
+import 'dart:async';
 
 class ChatScreen extends StatefulWidget {
   const ChatScreen({Key? key}) : super(key: key);
@@ -15,10 +18,14 @@ class ChatScreen extends StatefulWidget {
 }
 
 class _ChatScreenState extends State<ChatScreen> {
+  bool _isNear = false;
+  late StreamSubscription<dynamic> _streamSubscription;
+
   @override
   void initState() {
     Provider.of<ChatsNotifierProvider>(context, listen: false).getUserChats();
     super.initState();
+    listenSensor();
     ShakeDetector detector = ShakeDetector.autoStart(
       onPhoneShake: () {
         Navigator.push(
@@ -29,6 +36,33 @@ class _ChatScreenState extends State<ChatScreen> {
         );
       },
     );
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _streamSubscription.cancel();
+  }
+
+  Future<void> listenSensor() async {
+    FlutterError.onError = (FlutterErrorDetails details) {
+      if (foundation.kDebugMode) {
+        FlutterError.dumpErrorToConsole(details);
+      }
+    };
+    _streamSubscription = ProximitySensor.events.listen((int event) {
+      setState(() {
+        _isNear = (event > 0) ? true : false;
+      });
+      if (_isNear) {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => SelectContact(),
+          ),
+        );
+      }
+    });
   }
 
   @override
