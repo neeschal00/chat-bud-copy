@@ -75,6 +75,7 @@ class _ChatScreenState extends State<ChatScreen> {
         backgroundColor: Color(0xFF100E20),
         floatingActionButton: FloatingActionButton(
             backgroundColor: Colors.deepPurple,
+            key: Key('floatingActionButton'),
             onPressed: () {
               Navigator.pushReplacement(context,
                   MaterialPageRoute(builder: (context) => SelectContact()));

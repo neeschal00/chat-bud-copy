@@ -211,6 +211,7 @@ class _SignupScreenState extends State<SignupScreen> {
                                   utils.userimage);
                         }
                       },
+                      key: Key('signup'),
                       child: Container(
                         height: 50,
                         margin: EdgeInsets.symmetric(horizontal: 50),
